@@ -20,5 +20,6 @@ async function file_data(file){
   }
 }
 
-
-file_data(filePath);
+for(var i = 0;i < 50;i++){
+  file_data(filePath);
+}
