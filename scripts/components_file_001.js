@@ -27,18 +27,26 @@ async function file_data(file){
     } else if(!text.includes("<component>") && !text.includes("</component>")){
       throw new Error(`No component tag found at '${file}'`)
     }
-    const gRI = generateRandInt() ;
-    console.log(gRI);
-    let componentTag = document.querySelector("component");
-    let configuredTag = document.createElement(`component-${gRI}`);
-    
-    while(componentTag.firstChild){
-      configuredTag.appendChild(componentTag.firstChild);
-    }
-    componentTag.replaceWith(configuredTag);
-    console.log(configuredTag)
-    main.innerHTML += configuredTag;
-    
+    const gRI = generateRandInt();
+  console.log(gRI);
+  
+  const scopePos = text.indexOf("@scope (component)");
+  const compOpenPos = text.indexOf("<component>");
+  const compClosePos = text.indexOf("</component>");
+  
+  if (scopePos === -1 || compOpenPos === -1 || compClosePos === -1) return text;
+  
+  const formattedText =
+    text.slice(0, scopePos) +
+    `@scope (component-${gRI})` + // fixed interpolation
+    text.slice(scopePos + "@scope (component)".length, compOpenPos) +
+    `<component-${gRI}>` + // renamed opening tag
+    text.slice(compOpenPos + "<component>".length, compClosePos) +
+    `</component-${gRI}>` + // renamed closing tag
+    text.slice(compClosePos + "</component>".length); // fixed closing tag length
+  
+  console.log(formattedText);
+  main.innerHTML += formattedText;
   }catch(error) {
     console.error("An error occurred while reading *.nuek component: \n", error.message);
   }
