@@ -3,6 +3,8 @@
   :scope {
     & p {
       background: green;
+      border-radius: 3px;
+      color: #fff;
     }
   }
 }

@@ -1,5 +1,5 @@
 <style>
-@scope (component) {
+@scope(component) {
   :scope {
      & p {
         background: blue;
