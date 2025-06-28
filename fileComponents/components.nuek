@@ -1,5 +1,5 @@
 <style>
-@scope (div) {
+@scope (component) {
   :scope {
      & p {
         background: blue;
@@ -7,6 +7,6 @@
     }
 }
 </style>
-<div>
+<component>
 <p>This is a custom Nuek component</p>
-</div>
+</component>

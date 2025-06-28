@@ -7,4 +7,6 @@
   }
 }
 </style>
+<component>
 <p>Another Nuek Component</p>
+</component>
