@@ -1,0 +1,10 @@
+<style>
+@scope {
+  :scope {
+    & p {
+      background: red;
+    }
+  }
+}
+</style>
+<p>Another Nuek Component</p>

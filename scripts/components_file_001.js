@@ -1,6 +1,7 @@
 const main = document.querySelector('#main');
 
-const filePath = "../fileComponents/components.nuek";
+const filePath1 = "../fileComponents/components.nuek";
+const filePath2 = "../fileComponents/components2.nuek"
 
 async function file_data(file){
   if(!file) {
@@ -13,13 +14,13 @@ async function file_data(file){
       throw new Error("\nCouldn't read from *nuek File properly: try checking the component filePath");
     }
     var text = await response.text();
-    main.innerHTML = text;
+    
+    main.innerHTML += text;
     
   }catch(error) {
     console.error("An error occurred while reading *.nuek component: \n", error.message);
   }
 }
 
-for(var i = 0;i < 50;i++){
-  file_data(filePath);
-}
+  file_data(filePath1);
+  file_data(filePath2);
