@@ -1,6 +1,6 @@
 <style>
 @scope {
-  :scope {
+  :scope (component) {
     & p {
       background: red;
     }
