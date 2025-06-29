@@ -1,12 +1,8 @@
 <style>
-@scope (component){
-  :scope {
-    & p {
-      background: green;
-      border-radius: 3px;
-      color: #fff;
-    }
-  }
+& p {
+  background: green;
+  border-radius: 3px;
+  color: #fff;
 }
 </style>
 <component>

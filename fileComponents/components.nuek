@@ -1,10 +1,6 @@
 <style>
-@scope(component) {
-  :scope {
-     & p {
-        background: blue;
-      }
-    }
+& p {
+  background: blue;
 }
 </style>
 <component>

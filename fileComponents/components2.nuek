@@ -1,11 +1,7 @@
 <style>
-@scope (component){
-  :scope {
-    & p {
-      background: red;
-    }
+& p {
+  background: red;
   }
-}
 </style>
 <component>
 <p>Another Nuek Component</p>

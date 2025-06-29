@@ -24,6 +24,23 @@ function throwError(text,file){
 return text
 }
 
+function styleRegexAbstraction(text) {
+  const regexExp = /<style>([\s\S]*?)<\/style>/gi;
+  
+  return text.replace(regexExp,(match,styleContent) => {
+    
+    if(match.includes("@scope")) return match
+    
+    return `<style>
+@scope (component) {
+  :scope {
+    ${styleContent}
+  }
+}
+</style>`;
+  });
+}
+
 async function file_data(file) {
   if (!file) throw new Error("No component file detected...");
   
@@ -33,6 +50,8 @@ async function file_data(file) {
       throw new Error(`Couldn't read .nuek file: ${file}`);
     
     let text = await response.text();
+    text = styleRegexAbstraction(text);
+    console.log(text)
     text = throwError(text,file);
     
     const gRI = generateRandInt();
