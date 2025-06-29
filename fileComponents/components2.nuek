@@ -1,5 +1,6 @@
 <script>
   console.log("Hello world");
+  
 </script>
 <style>
 & p {
