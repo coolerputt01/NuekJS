@@ -77,16 +77,30 @@ function scriptAbstractionFix(text,file){
   return text;
 }
 
+function handleProps(text, file, prop) {
+  return text.replace(/{%\s*(\w+)\s*%}/g, (match, propName) => {
+    if (prop[propName] !== undefined) {
+      return prop[propName];
+    } else {
+      throw new Error(`Property '${propName}' not found in props in file ${file}'`);
+      return "";
+    }
+  });
+}
+
 async function file_data(file) {
   if (!file) throw new Error("No component file detected...");
   try {
     const response = await fetch(file);
     if (!response.ok)
       throw new Error(`Couldn't read .nuek file: ${file}`);
-    
+    let props = {
+      name:"Hello",
+    }
     let text = await response.text();
     text = scriptAbstractionFix(text, file);
     text = styleRegexAbstraction(text);
+    text = handleProps(text, file, props);
     text = throwError(text,file);
     
     const gRI = generateRandInt();

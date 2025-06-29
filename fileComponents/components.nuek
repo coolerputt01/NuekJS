@@ -20,7 +20,7 @@
 
 </style>
 <component>
-<p>This is a custom Nuek component</p>
+<p>This is a custom {% name %} component</p>
 <img src="../assets/icon/icon.png" class="image">
 <input type="text" placeholder="The component works fine." class="input">
 </component>
