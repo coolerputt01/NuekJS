@@ -88,7 +88,7 @@ function handleProps(text, file, prop) {
   });
 }
 
-async function file_data(file) {
+async function componentRead(file) {
   if (!file) throw new Error("No component file detected...");
   try {
     const response = await fetch(file);
@@ -96,6 +96,7 @@ async function file_data(file) {
       throw new Error(`Couldn't read .nuek file: ${file}`);
     let props = {
       name:"Hello",
+      src:"/assets/icon/icon.png"
     }
     let text = await response.text();
     text = scriptAbstractionFix(text, file);
@@ -116,4 +117,4 @@ async function file_data(file) {
   }
 }
 
-filePaths.forEach(file_data);
+filePaths.forEach(componentRead);
