@@ -1,6 +1,7 @@
 <style>
 & p {
   background: blue;
+  color: white;
 }
 .input {
   background: #3b3b3b;

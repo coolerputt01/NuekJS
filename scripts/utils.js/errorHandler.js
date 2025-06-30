@@ -1,4 +1,4 @@
-export function throwError(text,file){
+export default function throwError(text,file){
   if (!text.includes("<component>") || !text.includes("</component>")) {
   throw new Error(`Missing <component> or </component> tag in '${file}'`);
 }

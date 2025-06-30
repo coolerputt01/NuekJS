@@ -3,7 +3,7 @@ import { componentRead } from './utils.js/componentRead.js'
 class NuekComponent {
   constructor(selector 
   = "body",file,props=null){
-    if(typeof selector === string){
+    if(typeof selector === "string"){
       selector = document.querySelector(selector);
     }
     this.selector = selector;
@@ -15,3 +15,5 @@ class NuekComponent {
     componentRead(this.selector,this.file,this.props);
   }
 }
+
+window.NuekComponent = NuekComponent;
