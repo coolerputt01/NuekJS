@@ -20,7 +20,7 @@ Run the following to get started:
 npm install nuekjs
 ```
 
-Or use the available **CDN**(https://cdn.jsdelivr.net/npm/nuekjs@latest/scripts/main.js%22%7D):
+Or use the available **CDN** https://cdn.jsdelivr.net/npm/nuekjs@latest/scripts/main.js:
 
 ```html
 <!-- CDN usage example -->
