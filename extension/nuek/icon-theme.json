@@ -1,0 +1,10 @@
+{
+  "iconDefinitions": {
+    "nuek-icon": {
+      "iconPath": "./icons/icon.svg"
+    }
+  },
+  "fileExtensions": {
+    "nuek": "nuek-icon"
+  }
+}
