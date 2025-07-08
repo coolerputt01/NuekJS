@@ -1,6 +1,6 @@
 {
   "name": "nuekjs-syntax",
-  "displayName": "NuekJS Syntax Highlighting",
+  "displayName": "NuekJS",
   "description": "Syntax highlighting and Emmet support for NuekJS (.nuek) files.\n\n💡 To enable Emmet (auto-complete and HTML-like suggestions), follow these steps:\n\n1. Open VS Code Settings (Ctrl + ,)\n2. Search for `emmet.includeLanguages`\n3. Click `Edit in settings.json`\n4. Add:\n\n  \"emmet.includeLanguages\": {\n    \"nuekjs\": \"html\"\n  }\n\nAlternatively, copy-paste the above into your `settings.json` file directly.\n\nEnjoy smooth HTML-style editing in .nuek files!",
   "version": "0.0.1",
   "publisher": "coolerputt",
