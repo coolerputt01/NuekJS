@@ -1,0 +1,35 @@
+{
+  "name": "nuekjs-syntax",
+  "displayName": "NuekJS",
+  "description": "Syntax highlighter and code helper for NuekJS",
+  "version": "0.0.1",
+  "publisher": "coolerputt",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "nuekjs",
+        "aliases": ["NuekJS", "nuek"],
+        "extensions": [".nuek", ".nuekjs"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nuekjs",
+        "scopeName": "source.nuekjs",
+        "path": "./syntaxes/html.tmLanguage.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[nuekjs]": {
+        "emmet.includeLanguages": {
+          "nuekjs": "html"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "NuekJS HTML Mode",
+  "scopeName": "source.nuekjs",
+  "patterns": [
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {}
+}
