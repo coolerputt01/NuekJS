@@ -9,19 +9,15 @@ async function componentRead(selector,file,props = null) {
     if (!response.ok)
       throw new Error(`Couldn't read .nuek file: ${file}`);
     let text = await response.text();
+    const gRI = generateRandInt();
     text = scriptAbstractionFix(text, file);
-    text = styleRegexAbstraction(text);
-    if(props!== null){
+    text = styleRegexAbstraction(text,gRI);
+    if(props !== null){
       text = handleProps(text, file, props);
     }
     text = throwError(text,file);
-    
-    const gRI = generateRandInt();
-    
-    text = text
-      .replaceAll("<component>", `<component-${gRI}>`)
+    text = text.replaceAll("<component>", `<component-${gRI}>`)
       .replaceAll("</component>", `</component-${gRI}>`)
-      .replace("@scope (component)", `@scope (component-${gRI})`)
     
     selector.innerHTML += text;
   } catch (error) {

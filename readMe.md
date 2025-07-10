@@ -1,7 +1,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ---
 
-# 💫 Welcome to **NuekJS**
+# 💫 Welcome to **NuekJSv1.2**
 
 *The JS component library for **Vanilla Lovers*** 🍦💻
 
@@ -25,7 +25,7 @@ Or use the available **CDN** https://cdn.jsdelivr.net/npm/nuekjs@latest/scripts/
 ```html
 <!-- CDN usage example -->
 <script type="module">
-  const component1 = new NuekComponent(componentSelector, nuekFilePath, optionalProps);
+  const component1 = new NuekComponent(componentSelector, nuekFilePath, optionalProps, loop, condition);
 </script>
 ```
 
@@ -60,10 +60,11 @@ To begin, create `.nuek` files — each file contains a single self-contained co
 ```html
 <!-- Import your .nuek component like this -->
 <script type="module">
+  let show = true;
   const myComponent = new NuekComponent("#app", "/components/Card.nuek", {
     title: "Hello",
     content: "This is from NuekJS!"
-  });
+  }, 1,show);
 </script>
 ```
 

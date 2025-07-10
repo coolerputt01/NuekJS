@@ -1,20 +1,25 @@
-function styleRegexAbstraction(text) {
+function styleRegexAbstraction(text , gRI) {
   if(!text.includes("<style>") && !text.includes("</style>")) return text;
   
   const regexExp = /<style>([\s\S]*?)<\/style>/gi;
   
-  return text.replace(regexExp,(match,styleContent) => {
+  const componentContent =  text.replace(regexExp,(match,styleContent) => {
     
     if(match.includes("@scope")) return match
     
-    return `<style>
+    let componentStyleContent = `
 @scope (component) {
   :scope {
     ${styleContent}
   }
-}
-</style>`;
-  });
+}`;
+componentStyleContent = componentStyleContent.replace("@scope (component)", `@scope (component-${gRI})`)
+const componentStyleTag = document.createElement("style");
+componentStyleTag.textContent = componentStyleContent;
+document.head.appendChild(componentStyleTag);
+return '';
+});
+return componentContent;
 }
 
 
