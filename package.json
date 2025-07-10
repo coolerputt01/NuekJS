@@ -1,0 +1,29 @@
+{
+  "name": "nuekjs",
+  "version": "1.2.0",
+  "description": "A JS component framework to make life better for HTML,NueJS intrigued developers and inspired by love",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coolerputt01/NuekJS.git"
+  },
+  "keywords": [
+    "nuekjs",
+    "js-component",
+    "js-framework",
+    "framework",
+    "component-framework",
+    "vanilla",
+    "vanilla-js",
+    "love"
+  ],
+  "author": "coolerputt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coolerputt01/NuekJS/issues"
+  },
+  "homepage": "https://github.com/coolerputt01/NuekJS#readme"
+}
