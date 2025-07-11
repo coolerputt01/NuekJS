@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NuekJS Utility tests</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NuekJS Utility Tests</title>
 </head>
 
 <body>
-  <h1>NuekJs Utility Tests</h1>
-  <p>Checking Component</p>
-  <div id="main">
-    
-  </div>
+  <h1>NuekJS Utility Tests</h1>
+  <p>Testing createComponent helper</p>
+  <div id="main"></div>
+
+  <script type="module">
+    // Load main class file first to register window.NuekComponent
+    import './scripts/main.js';
+    import { createComponent } from '/scripts/helpers.js';
+
+    const props = {
+      name: "Hello",
+      src: "/assets/icon/icon.png"
+    };
+
+    // Use helper
+    const render = createComponent({
+      target: "#main",
+      loop: 1,
+      condition: true
+    });
+
+    console.log("Render function:", render);
+    render("fileComponents/components.nuek", props);
+
+    // Direct usage
+    const component = new window.NuekComponent(
+      "#main",
+      "fileComponents/components.nuek",
+      props,
+      1,
+      true
+    );
+
+    console.log("Direct component:", component);
+  </script>
 </body>
-<script src="/scripts/main.js" type="module"></script>
-<script type="module">
-const props = {
-  name:"Hello",
-  src:"/assets/icon/icon.png"
-}
-const component = new NuekComponent("#main","fileComponents/components.nuek",props, 1,true);
-
-console.log(component);
-</script>
-
 </html>
