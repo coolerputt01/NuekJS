@@ -1,4 +1,3 @@
-// Import the file to make sure NuekComponent is attached to window
 import "./main.js";
 
 /**
