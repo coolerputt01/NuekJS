@@ -1,27 +1,23 @@
 <style>
 & p {
-  background: blue;
-  color: white;
+  color: grey;
 }
-.input {
-  background: #3b3b3b;
-  color: white;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  padding: 12px;
+.card {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 13px;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 10px 2px lightgrey;
 }
-.input::placeholder {
-  color: #fff;
+b {
+  color: #0aa;
 }
-.image {
-  width: 6em;
-  height: 6em;
-}
-
 </style>
 <component>
-<p>This is a custom {% name %} component</p>
-<img src="{% src %}" class="image">
-<input type="text" placeholder="The component works fine." class="input">
+<div class="card">
+  <h2>NuekComponent</h2>
+  <p><b>Name:</b> {% name %}</p>
+  <p><b>Age:</b> {% age %}</p>
+  <p><b>Role:</b> {% role %}</p>
+</div>
 </component>
