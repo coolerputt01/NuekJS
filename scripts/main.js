@@ -1,4 +1,15 @@
-import { componentRead } from './utils.js/componentRead.js'
+import { componentRead } from './utils/componentRead.js';
+import { dynamicComponentRead } from './utils/dynamicComponentRead.js';
+
+function reactive(obj, callback) {
+  return new Proxy(obj, {
+    set(target, key, value) {
+      target[key] = value;
+      callback(target);
+      return true;
+    }
+  });
+}
 
 class NuekStaticComponent {
   constructor(selector 
@@ -13,11 +24,13 @@ class NuekStaticComponent {
     this.loop = loop;
     if(condition === true){
     this.init();
-    console.log("how far")
     }
   }
   init() {
     for(var i = 0; i < this.loop;i++){
+      if(typeof this.props[i] === "object"){
+        console.warn(`You should probably use the 'NuekPropsComponent' instead\n at ${this.file}`);
+      }
       componentRead(this.selector,this.file,this.props);
     }
   }
@@ -35,7 +48,6 @@ class NuekPropsComponent {
     this.condition = condition;
     if(condition === true){
     this.init();
-    console.log("how far")
     }
   }
   init() {
@@ -48,6 +60,39 @@ class NuekPropsComponent {
     }
   }
 }
-
+class NuekDynamicPropsComponent {
+  constructor(selector = "body", file, props = null, condition = true) {
+    if (typeof selector === "string") {
+      selector = document.querySelector(selector);
+    }
+    this.selector = selector;
+    this.file = file;
+    this._props = [];
+    this.condition = condition;
+    this.previousProps = [];
+    if (condition === true) {
+      this.props = props;
+    }
+  }
+  
+  set props(newProps) {
+    if(!Array.isArray(newProps))
+      throw new Error("Props must be an array");
+    this._props = newProps.map((prop, i) => {
+      if (!prop.id) prop.id = `component-${i}`;
+      return reactive(prop, (newProp) => {
+        console.log("updating...");
+        dynamicComponentRead(this.selector, this.file, newProp);
+      });
+  });
+  
+  // initial render
+  this._props.forEach((prop) => dynamicComponentRead(this.selector, this.file, prop));
+  }
+  get props() {
+    return this._props;
+  }
+}
 window.NuekStaticComponent = NuekStaticComponent;
 window.NuekPropsComponent = NuekPropsComponent;
+window.NuekDynamicPropsComponent = NuekDynamicPropsComponent;

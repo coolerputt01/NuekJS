@@ -10,20 +10,32 @@
 <body>
   <h1>NuekJs Utility Tests</h1>
   <p>Checking Component</p>
+  <button id="button">Click me to see magic</button>
   <div id="main">
     
   </div>
 </body>
 <script src="/scripts/main.js" type="module"></script>
 <script type="module">
-const props = [
-  { name: "John", age: 25, role: "Developer" },
-  { name: "Jane", age: 30, role: "Designer" },
-  { name: "Max", age: 22, role: "Intern" }
+var props1 = [
+  { name: "John", age: 25, role: "Developer"}
 ];
-const component = new NuekPropsComponent("#main","fileComponents/components.nuek",props,true);
+var prop2 = [
+  { name: "Jane", age: 30, role: "Designer" }
+];
 
-console.log(component);
+var prop3 = [
+  {
+    name: "Judah", age: 33, role: "Doctor"
+  }
+]
+const component = new NuekDynamicPropsComponent("#main","fileComponents/components.nuek",props1,true);
+
+document.querySelector("#button").addEventListener("click", ()=>{
+  console.log("hi");
+  component.props = prop2;
+console.log(props1);
+});
 </script>
 
 </html>

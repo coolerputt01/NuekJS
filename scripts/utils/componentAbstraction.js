@@ -38,7 +38,6 @@ function scriptAbstractionFix(text,file){
   const scriptFix = document.createElement("script");
   scriptFix.textContent = scriptCode;
   document.body.appendChild(scriptFix);
-  console.log(scriptFix)
   return text;
 }
 

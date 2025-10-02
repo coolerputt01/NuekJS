@@ -3,7 +3,7 @@ import {styleRegexAbstraction , scriptAbstractionFix,handleProps} from './compon
 import generateRandInt from './generateRandInt.js';
 
 async function componentRead(selector,file,props = null) {
-  if (!file) throw new Error("No component file detected...");
+  if (!file) throw new Error("No component file found...");
   try {
     const response = await fetch(file);
     if (!response.ok)
