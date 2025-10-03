@@ -74,8 +74,7 @@ To begin, create `.nuek` files — each file contains a single self-contained co
 
 ### 🛠️ Use Cases
 
-More examples and advanced patterns are coming soon...
-
+Please visit the docs for more information and the use and uses of this package.
 ---
 
 Thanks for being here. That’s all you need to get started.
