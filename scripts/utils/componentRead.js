@@ -1,6 +1,7 @@
 import throwError from './errorHandler.js';
 import {styleRegexAbstraction , scriptAbstractionFix,handleProps} from './componentAbstraction.js';
 import generateRandInt from './generateRandInt.js';
+import reactive from './reactivity.js';
 
 async function componentRead(selector,file,props = null) {
   if (!file) throw new Error("No component file found...");

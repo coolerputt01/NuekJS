@@ -1,20 +1,20 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ---
 
-# 💫 Welcome to **NuekJSv1.2**
+# 💫 Welcome to **NuekJSv1.2.5**
 
 *The JS component library for **Vanilla Lovers*** 🍦💻
 
 > Based entirely on **Vanilla JavaScript** — built to be fast, minimal, and powerful.
-> Powered by **NueJS**, the next-gen SSR framework written in Rust.
+> Powered by **NueJS**, the SSR framework written in Rust.
 >
-> **May GOD help us all** 🥹❤️💋🙏🙏🙏
+> **May GOD help us all** 🙏🙏🙏
 
 ---
 
 ### ⚙️ Installation
 
-Run the following to get started:
+Run the following on bash to get started:
 
 ```bash
 npm install nuekjs
@@ -22,10 +22,12 @@ npm install nuekjs
 
 Or use the available **CDN** https://cdn.jsdelivr.net/npm/nuekjs@latest/scripts/main.js:
 
+Then create a simple static component for a test.
+
 ```html
 <!-- CDN usage example -->
 <script type="module">
-  const component1 = new NuekComponent(componentSelector, nuekFilePath, optionalProps, loop, condition);
+  const nodeComponent = new NuekStaticComponent(componentContainer, nuekFilePath, optionalProps, loop, condition);
 </script>
 ```
 
@@ -61,7 +63,7 @@ To begin, create `.nuek` files — each file contains a single self-contained co
 <!-- Import your .nuek component like this -->
 <script type="module">
   let show = true;
-  const myComponent = new NuekComponent("#app", "/components/Card.nuek", {
+  const nodeElement = new NuekStaticComponent("#app", "/components/Card.nuek", {
     title: "Hello",
     content: "This is from NuekJS!"
   }, 1,show);

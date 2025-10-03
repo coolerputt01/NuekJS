@@ -1,23 +1,23 @@
-// dynamicComponentRead.js
 import throwError from './errorHandler.js';
-import { styleRegexAbstraction, scriptAbstractionFix, handleProps } from './componentAbstraction.js';
+import {htmlAbstractionHandler, styleRegexAbstraction, scriptAbstractionFix, handleProps } from './componentAbstraction.js';
 import generateRandInt from './generateRandInt.js';
 
-var elementMap = new Map();
+var nodeMap = new Map();
 var nextTag = 0;
-function findByDataId(root, id) {
-  if(elementMap.has(id)) {
-    return elementMap.get(id);
+
+function findByDataId(container, id) {
+  if(nodeMap.has(id)) {
+    return nodeMap.get(id);
   }else{
-    var element = root.querySelector(`[data-id="${id}"]`);
-    if(element){
-      elementMap.set(id, element);
-      return element;
+    var node = container.querySelector(`[data-id="${id}"]`);
+    if(node){
+      nodeMap.set(id, node);
+      return node;
     }
   }
 }
 
-async function dynamicComponentRead(selector, file, prop={}) {
+async function dynamicComponentRead(container, file, prop={}) {
   if (!file) throw new Error("No component file found...");
   
   try {
@@ -28,31 +28,24 @@ async function dynamicComponentRead(selector, file, prop={}) {
     let text = await response.text();
     const gRI = generateRandInt();
     
-    // Inject styles and scripts
     text = styleRegexAbstraction(text, gRI);
     text = scriptAbstractionFix(text, file);
     
-    // Inject props into the template
     text = handleProps(text, file, prop);
     
-    // Error handling
     text = throwError(text, file);
    var prop_id = prop.id || String(nextTag++);
-    text = text.replaceAll("<component>", `<component-${gRI} data-id="${prop_id}">`)
-  .replaceAll("</component>", `</component-${gRI}>`)
-  console.log(text);
+   
+    text = htmlAbstractionHandler(text,gRI,prop_id);
     
     if(prop){
-      let existing = findByDataId(selector,prop_id);
-      console.log(existing);
-      console.log(prop_id);
-      if (existing){
-        console.log("How about here?");
-        existing.outerHTML = text;
+      let existingElement = findByDataId(container,prop_id);
+      if(existingElement){
+        existingElement.outerHTML = text;
       } else {
-        const temp = document.createElement("div");
-        temp.innerHTML = text;
-        selector.appendChild(temp.firstElementChild);
+        const nodeElement = document.createElement("div");
+        nodeElement.innerHTML = text;
+        container.appendChild(nodeElement.firstElementChild);
       }
     }
   } catch (error) {

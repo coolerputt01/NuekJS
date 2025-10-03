@@ -52,4 +52,11 @@ function handleProps(text, file, prop) {
   });
 }
 
-export {styleRegexAbstraction,scriptAbstractionFix,handleProps}
+function htmlAbstractionHandler(text,gri,pid){
+  var txt = text.replaceAll("<component>", `<component-${gri} data-id="${pid}">`)
+  .replaceAll("</component>", `</component-${gri}>`)
+  return txt;
+}
+
+
+export {htmlAbstractionHandler,styleRegexAbstraction,scriptAbstractionFix,handleProps}

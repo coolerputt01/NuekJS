@@ -18,10 +18,14 @@
 <script src="/scripts/main.js" type="module"></script>
 <script type="module">
 var props1 = [
-  { name: "John", age: 25, role: "Developer"}
+  { name: "John", age: 25, role: "Developer"},
+   { name: "Jane", age: 30, role: "Designer" }
 ];
 var prop2 = [
-  { name: "Jane", age: 30, role: "Designer" }
+  { name: "James", age: 48, role: "Driller" },
+   {
+    name: "Judah", age: 33, role: "Doctor"
+  }
 ];
 
 var prop3 = [
@@ -32,9 +36,7 @@ var prop3 = [
 const component = new NuekDynamicPropsComponent("#main","fileComponents/components.nuek",props1,true);
 
 document.querySelector("#button").addEventListener("click", ()=>{
-  console.log("hi");
   component.props = prop2;
-console.log(props1);
 });
 </script>
 
