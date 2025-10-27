@@ -1,0 +1,16 @@
+app = "nuek-ssr"
+
+[build]
+  image = "rust:latest"
+
+[env]
+  RUST_LOG = "info"
+
+[[services]]
+  internal_port = 3000
+  processes = ["app"]
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80

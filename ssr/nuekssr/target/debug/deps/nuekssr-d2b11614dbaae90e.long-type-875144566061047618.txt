@@ -1,2 +1,0 @@
-fn(Json<RenderHTMLAsJSON>) -> impl Future<Output = Html<std::string::String>> {renderHTML}
-fn(Json<RenderHTMLAsJSON>) -> impl Future<Output = Html<std::string::String>> {renderHTML}: Handler<_, _>
