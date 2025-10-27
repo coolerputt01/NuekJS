@@ -1,0 +1,2 @@
+fn(Json<RenderHTMLAsJSON>) -> impl Future<Output = Html<{type error}>> {renderHTML}
+fn(Json<RenderHTMLAsJSON>) -> impl Future<Output = Html<{type error}>> {renderHTML}: Handler<_, _>
