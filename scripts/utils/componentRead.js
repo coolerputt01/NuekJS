@@ -5,6 +5,9 @@ import serverRender from './serverRender.js';
 
 async function componentRead(selector,file,props = null,ssr) {
   if (!file) throw new Error("No component file found...");
+  if(selector === undefined){
+    throw new Error("Selector not found at: ",file);
+  }
   try {
     const response = await fetch(file);
     if (!response.ok)

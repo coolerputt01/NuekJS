@@ -20,7 +20,9 @@ function findByDataId(container, id) {
 
 async function dynamicComponentRead(container, file, prop={},ssr=false) {
   if (!file) throw new Error("No component file found...");
-  
+  if (selector === undefined) {
+  throw new Error("Selector not found at: ", file);
+  }
   try {
     const response = await fetch(file);
     if (!response.ok)
