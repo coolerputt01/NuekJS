@@ -34,7 +34,7 @@ var prop3 = [
   }
 ]
 const component = new NuekDynamicPropsComponent("#main","fileComponents/components.nuek",props1,true);
-
+const component2 = new NuekStaticComponent("#main","fileComponents/components2.nuek");
 document.querySelector("#button").addEventListener("click", ()=>{
   component.props = prop2;
 });

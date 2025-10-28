@@ -4,7 +4,7 @@ import reactive from './utils/reactivity.js';
 
 class NuekStaticComponent {
   constructor(container 
-  = "body",file,props=null,loop=1,condition=true){
+  = "body",file,props=null,loop=1,condition=true,ssr){
     if(typeof container === "string"){
       container = document.querySelector(container);
     }
@@ -13,6 +13,7 @@ class NuekStaticComponent {
     this.props = props || [];
     this.condition = condition;
     this.loop = loop;
+    this.ssr = ssr;
     if(condition === true){
     this.init();
     }
@@ -22,14 +23,14 @@ class NuekStaticComponent {
       if(typeof this.props[i] === "object"){
         console.warn(`You should probably use the 'NuekPropsComponent' instead\n at ${this.file}`);
       }
-      componentRead(this.container,this.file,this.props);
+      componentRead(this.container,this.file,this.props,this.ssr);
     }
   }
 }
 
 class NuekPropsComponent {
   constructor(container 
-  = "body",file,props=null,condition=true){
+  = "body",file,props=null,condition=true,ssr){
     if(typeof container === "string"){
       container = document.querySelector(container);
     }
@@ -37,6 +38,7 @@ class NuekPropsComponent {
     this.file = file;
     this.props = props || [];
     this.condition = condition;
+    this.ssr = ssr;
     if(condition === true){
     this.init();
     }
@@ -44,7 +46,7 @@ class NuekPropsComponent {
   init() {
     if(this.props !== null && Array.isArray(this.props)){
       for(var i = 0; i < this.props.length;i++){
-        componentRead(this.container,this.file,this.props[i]);
+        componentRead(this.container,this.file,this.props[i],this.ssr);
       }
     }else {
       throw new Error("Props is not a valid type 'Array[]()'");
@@ -52,7 +54,7 @@ class NuekPropsComponent {
   }
 }
 class NuekDynamicPropsComponent {
-  constructor(container = "body", file, props = null, condition = true) {
+  constructor(container = "body", file, props = null, condition = true,ssr = true) {
     if (typeof container === "string") {
       container = document.querySelector(container);
     }
@@ -60,6 +62,7 @@ class NuekDynamicPropsComponent {
     this.file = file;
     this._props = [];
     this.condition = condition;
+    this.ssr = this.ssr;
     this.previousProps = [];
     if (condition === true) {
       this.props = props;
@@ -73,7 +76,7 @@ class NuekDynamicPropsComponent {
       if (!prop.id) prop.id = `component-${i}`;
       return reactive(prop, (newProp) => {
         console.log("updating...");
-        dynamicComponentRead(this.container, this.file, newProp);
+        dynamicComponentRead(this.container, this.file, newProp,this.ssr);
       });
   });
   

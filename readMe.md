@@ -1,20 +1,19 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ---
 
-# 💫 Welcome to **NuekJSv1.2.5**
+#  Welcome to **NuekJS1.3.0 🔥**
 
-*The JS component library for **Vanilla Lovers*** 🍦💻
+*The JS component library for **Vanilla Lovers and Framework ones too lol*** 
 
-> Based entirely on **Vanilla JavaScript** — built to be fast, minimal, and powerful.
-> Powered by **NueJS**, the SSR framework written in Rust.
->
+> A JS SSR framework built to help build efficient frontend systems.
+> Inspired by **NueJS**, the SSR framework written in Rust.
 > **May GOD help us all** 🙏🙏🙏
 
 ---
 
 ### ⚙️ Installation
 
-Run the following on bash to get started:
+Nuek was built to work with CDN which I highly recommend 🌝, but in a large codebase where you actually use a js bundler like Vite you can run the command below.
 
 ```bash
 npm install nuekjs
@@ -27,13 +26,13 @@ Then create a simple static component for a test.
 ```html
 <!-- CDN usage example -->
 <script type="module">
-  const nodeComponent = new NuekStaticComponent(componentContainer, nuekFilePath, optionalProps, loop, condition);
+  const nodeComponent = new NuekStaticComponent(componentContainer, nuekFilePath, optionalProps, loop, condition,ssr);
 </script>
 ```
 
 ---
 
-### 📁 Component Setup (`.nuek` files)
+### Component Setup (`.nuek` files)
 
 To begin, create `.nuek` files — each file contains a single self-contained component.
 
@@ -57,16 +56,17 @@ To begin, create `.nuek` files — each file contains a single self-contained co
 
 ---
 
-### 💡 Usage in HTML
+### Usage in HTML
 
 ```html
 <!-- Import your .nuek component like this -->
 <script type="module">
   let show = true;
+  //The last parameter is false because I'm not using SSR btw.
   const nodeElement = new NuekStaticComponent("#app", "/components/Card.nuek", {
     title: "Hello",
     content: "This is from NuekJS!"
-  }, 1,show);
+  }, 1,show,false);
 </script>
 ```
 
@@ -74,7 +74,7 @@ To begin, create `.nuek` files — each file contains a single self-contained co
 
 ### 🛠️ Use Cases
 
-Please visit the docs for more information and the use and uses of this package.
+Please visit the docs for more information and the use and uses of this package, at least for now.
 ---
 
 Thanks for being here. That’s all you need to get started.

@@ -1,4 +1,5 @@
 import throwError from './errorHandler.js';
+import serverRender from './serverRender.js';
 import {htmlAbstractionHandler, styleRegexAbstraction, scriptAbstractionFix, handleProps } from './componentAbstraction.js';
 import generateRandInt from './generateRandInt.js';
 
@@ -17,7 +18,7 @@ function findByDataId(container, id) {
   }
 }
 
-async function dynamicComponentRead(container, file, prop={}) {
+async function dynamicComponentRead(container, file, prop={},ssr=false) {
   if (!file) throw new Error("No component file found...");
   
   try {
@@ -37,14 +38,17 @@ async function dynamicComponentRead(container, file, prop={}) {
    var prop_id = prop.id || String(nextTag++);
    
     text = htmlAbstractionHandler(text,gRI,prop_id);
+    if(ssr){
+      text = await serverRender(text);
+    }
     
     if(prop){
       let existingElement = findByDataId(container,prop_id);
-      if(existingElement){
-        existingElement.outerHTML = text;
+      if(existingElement && existingElement.parentNode){
+        existingElement.outerHTML = text.trim();
       } else {
         const nodeElement = document.createElement("div");
-        nodeElement.innerHTML = text;
+        nodeElement.innerHTML = text.trim();
         container.appendChild(nodeElement.firstElementChild);
       }
     }
