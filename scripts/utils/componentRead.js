@@ -24,7 +24,7 @@ async function componentRead(selector,file,props = null,ssr) {
       .replaceAll("</component>", `</component-${gRI}>`)
       
     if(ssr){
-      text = serverRender(text);
+      text = await serverRender(text);
     }
     
     selector.innerHTML += text;
