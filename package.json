@@ -1,6 +1,6 @@
 {
   "name": "nuekjs",
-  "version": "1.3.0",
+  "version": "1.3.3",
   "description": "A JS component framework to make life better for frontend developers and commissioned with love",
   "main": "main.js",
   "scripts": {

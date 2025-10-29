@@ -1,7 +1,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ---
 
-#  Welcome to **NuekJS1.3.0 🔥**
+#  Welcome to **NuekJS1.3 🔥**
 
 *The JS component library for **Vanilla Lovers and Framework ones too lol*** 
 
