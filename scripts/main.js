@@ -89,3 +89,5 @@ class NuekDynamicPropsComponent {
 window.NuekStaticComponent = NuekStaticComponent;
 window.NuekPropsComponent = NuekPropsComponent;
 window.NuekDynamicPropsComponent = NuekDynamicPropsComponent;
+
+export { NuekPropsComponent, NuekStaticComponent, NuekDynamicPropsComponent}
